@@ -19,7 +19,6 @@
         </where>
         order by
         date DESC
-        limit #{pageNo},#{pageSize}
     </select>
 
     <select id="selectCountByCondition" resultType="int">

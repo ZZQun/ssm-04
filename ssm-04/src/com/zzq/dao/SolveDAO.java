@@ -10,14 +10,12 @@ import java.util.List;
 @Repository
 public interface SolveDAO {
 
-    public List<Solve> selectByCondition(@Param("status")String status,
+     List<Solve> selectByCondition(@Param("status")String status,
                                          @Param("name")String name,
                                          @Param("address")String address,
-                                         @Param("userlist_id")Integer userlist_id,
-                                         @Param("pageNo")Integer pageNo,
-                                         @Param("pageSize")Integer pageSize);
+                                         @Param("userlist_id")Integer userlist_id);
 
-    public int selectCountByCondition(@Param("status")String status,
+     int selectCountByCondition(@Param("status")String status,
                                       @Param("name")String name,
                                       @Param("userlist_id")Integer userlist_id,
                                       @Param("address")String address);

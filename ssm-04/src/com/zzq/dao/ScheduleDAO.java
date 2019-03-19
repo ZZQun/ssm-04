@@ -10,8 +10,7 @@ import java.util.List;
 @Repository
 public interface ScheduleDAO {
 
-    public List<Schedule> selectByCondition(@Param("pageNo")Integer pageNo,
-                                            @Param("pageSize")Integer pageSize);
+     List<Schedule> selectByCondition();
 
-    public int selectCountByCondition();
+     int selectCountByCondition();
 }

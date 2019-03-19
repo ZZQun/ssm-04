@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface HouseListDAO {
 
-    public List<HouseList> selectByCondition(@Param("status")String status);
+     List<HouseList> selectByCondition(@Param("status")String status);
 
-    public int selectCountByCondition(@Param("status")String status);
+     int selectCountByCondition(@Param("status")String status);
 }

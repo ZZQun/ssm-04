@@ -6,14 +6,14 @@ import com.zzq.pojo.User;
 
 public interface UserDAO {
 
-	public User selectByUsernameAndPassword(@Param("username")String username,
+	 User selectByUsernameAndPassword(@Param("username")String username,
 			@Param("password")String password);
 	
-	public User selectByUsername(@Param("username")String username);
+	 User selectByUsername(@Param("username")String username);
 	
-	public int insertUser(User user);
+	 int insertUser(User user);
 	
-	public int deleteUser(int id);
+	 int deleteUser(int id);
 	
-	public int pwdModify(@Param("id")Integer id,@Param("newpassword")String newpassword);
+	 int pwdModify(@Param("id")Integer id,@Param("newpassword")String newpassword);
 }

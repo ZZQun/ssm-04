@@ -31,9 +31,11 @@
          <h2 class="leftH2"><span class="span1"></span>功能列表 <span></span></h2>
          <nav>
              <ul class="list">
-                 <li ><a href="${path}/paid/paidlist">房租管理</a></li>
+                <li><a href="${path}/paid/paidlist">房租管理</a></li>
               <li><a href="${path }/house/houselist">房屋出租信息</a></li>
+                 <li><a href="${path }/schedule/schedulelist">新闻公告</a></li>
               <li><a href="${path }/user/userlist">用户管理</a></li>
+                 <li><a href="${path }/solve/solvelist">故障申报</a></li>
               <li><a href="${path }/user/pwdmodify">密码修改</a></li>
               <li><a href="${path }/sys/logout">退出系统</a></li>
              </ul>
