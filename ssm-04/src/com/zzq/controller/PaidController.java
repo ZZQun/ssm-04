@@ -1,6 +1,8 @@
 package com.zzq.controller;
 
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.zzq.common.Constant;
 import com.zzq.pojo.HouseList;
 import com.zzq.pojo.Paid;
@@ -26,20 +28,16 @@ public class PaidController {
                             @RequestParam(value="name",required=false)String name,
                             @RequestParam(value="address",required=false)String address,
                             @RequestParam(value="userlist_id",required=false)Integer userlist_id,
-                            @RequestParam(value="pageNo",required=false)Integer pageNo,Model model){
-        if(pageNo == null){
-            pageNo = 1;
-        }
+                           @RequestParam(defaultValue="1",required=true,value="pn") Integer pageNo,Model model){
+        Integer pageSize= Constant.PAGESIZE;//每页显示记录数
+        //分页查询
+        PageHelper.startPage(pageNo, pageSize);
         //获取用户信息集合
-        List<Paid> paidList = paidService.findByCondition(status, name, address, userlist_id, pageNo, Constant.PAGESIZE);
-        //获取用户信息的总数
-        Integer total = paidService.findCountByCondition(status,name,address,userlist_id);
-        Integer totalPage = total%Constant.PAGESIZE==0?total/Constant.PAGESIZE:total/Constant.PAGESIZE+1;
-        model.addAttribute("paidList",paidList);
-        model.addAttribute("total",total);
-        model.addAttribute("totalPage",totalPage);
+        List<Paid> paidList = paidService.findByCondition(status, name, address, userlist_id);
+        PageInfo<Paid> pageInfo=new PageInfo<Paid>(paidList);
+        model.addAttribute("pageInfo",pageInfo);
         model.addAttribute("status",status);
-        model.addAttribute("pageNo",pageNo);
+
         return "paidList";
     }
 }

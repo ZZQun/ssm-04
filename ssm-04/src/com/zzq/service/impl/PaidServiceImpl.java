@@ -15,15 +15,8 @@ public class PaidServiceImpl implements PaidService{
     private PaidDAO paidDAO;
 
     @Override
-    public List<Paid> findByCondition(String status, String name, String address, Integer userlist_id, Integer pageNo, Integer pageSize) {
-        Integer page = (pageNo -1)*pageSize;
-        return paidDAO.selectByCondition(status,name,address,userlist_id,page,pageSize);
+    public List<Paid> findByCondition(String status, String name, String address, Integer userlist_id) {
+        return paidDAO.selectByCondition(status,name,address,userlist_id);
     }
-
-    @Override
-    public int findCountByCondition(String status, String name, String address, Integer userlist_id) {
-        return paidDAO.selectCountByCondition(status,name,userlist_id,address);
-    }
-
 
 }

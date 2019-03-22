@@ -20,7 +20,7 @@
                 <option value="未处理">未处理</option>
             </select>
             <input	value="查 询" type="submit" id="searchbutton">
-            <a href="${path}/useradd" >添加租金信息</a>
+            <a href="${path}/useradd" >添加故障信息</a>
         </form>
     </div>
     <!--故障-->

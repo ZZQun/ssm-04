@@ -6,8 +6,20 @@
         order by
         date DESC
     </select>
-
-    <select id="selectCountByCondition" resultType="int">
-        select Count(*) from schedule
-    </select>
+    <delete id="deleteScheduleById">
+        DELETE FROM
+        schedule
+        WHERE id = #{id}
+    </delete>
+    <insert id="insertSchedule">
+        INSERT INTO
+        schedule(date,content)
+        VALUES
+        (#{date},#{content})
+    </insert>
+    <update id="uodateSchedule">
+        UPDATE schedule
+        SET date=#{date},content=#{content}
+        WHERE id=#{id}
+    </update>
 </mapper>

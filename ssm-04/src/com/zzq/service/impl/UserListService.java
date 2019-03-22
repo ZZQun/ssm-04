@@ -6,9 +6,7 @@ import com.zzq.pojo.UserList;
 
 public interface UserListService {
 	
-	 List<UserList> findByCondition(String name,Integer id,Integer pageNo,Integer pageSize);
-	
-	 int findCountByCondition(String name,Integer id);
+	 List<UserList> findByCondition(String name,Integer id);
 	
 	 int insertUserList(UserList userList);
 	

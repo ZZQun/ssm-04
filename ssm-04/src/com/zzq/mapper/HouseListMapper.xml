@@ -12,12 +12,28 @@
         houseid ASC
     </select>
 
-    <select id="selectCountByCondition" resultType="int">
-        select Count(*) from houselist
-        <where>
-            <if test="status != '' and status != null">
-                and status = #{status}
-            </if>
-        </where>
+    <select id="selectHouseLustById" resultType="com.zzq.pojo.HouseList">
+        SELECT houseid,address,price,status,detail
+        FROM houselist
+        WHERE houseid=#{houseId}
     </select>
+
+    <delete id="deleteHouseListById">
+        DELETE FROM
+        houselist
+        WHERE houseid=#{houseId}
+    </delete>
+
+    <insert id="insertHouseList">
+        INSERT INTO
+        houselist (address,price,status,detail)
+        VALUES (#{address},#{price},#{status},#{detail})
+    </insert>
+
+    <update id="updateHouseList">
+        UPDATE houselist
+        SET address=#{address},price=#{price},
+        status=#{status},detail=#{detail}
+        WHERE houseid=#{houseId}
+    </update>
 </mapper>

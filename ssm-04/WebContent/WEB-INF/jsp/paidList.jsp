@@ -35,7 +35,7 @@
             <th width="10%">状态</th>
             <th width="25%">操作</th>
         </tr>
-        <c:forEach var="paid" items="${paidList}" varStatus="status">
+        <c:forEach var="paid" items="${pageInfo.list}" varStatus="status">
             <tr>
                 <td>
                     <span>${paid.name}</span>
@@ -65,20 +65,28 @@
             </tr>
         </c:forEach>
     </table>
-    <input type="hidden" id="totalPageCount" value="${total}"/>
-    <div class="page-bar">
-        <ul class="page-num-ul clearfix">
-            <li>共${total}条记录&nbsp;&nbsp; ${pageNo}/${totalPage }页</li>
-            <c:if test="${pageNo > 1}">
-                <a href="javascript:page_nav(document.forms[0],1);">首页</a>
-                <a href="javascript:page_nav(document.forms[0],${pageNo-1} });">上一页</a>
+    <!-- 分页 -->
+    <div class="ui circular labels" style="float: right;">
+        <a class="ui label">当前第 ${pageInfo.pageNum }页,总${pageInfo.pages }
+            页,总 ${pageInfo.total } 条记录</a>
+        <a class="ui label" href="${Project_PATH}/paid/paidlist?pn=1">首页</a>
+        <c:if test="${pageInfo.hasPreviousPage }">
+            <a class="ui label" href="${Project_PATH}/paid/paidlist?pn=${pageInfo.pageNum-1 }">上一页</a>
+        </c:if>
+
+        <c:forEach items="${pageInfo.navigatepageNums }" var="page_Num">
+            <c:if test="${page_Num == pageInfo.pageNum }">
+                <a class="ui label" href="${Project_PATH}/paid/paidlist?pn=${page_Num}">${page_Num}</a>
             </c:if>
-            <c:if test="${pageNo < totalPage }">
-                <a href="javascript:page_nav(document.forms[0],${pageNo+1} });">下一页</a>
-                <a href="javascript:page_nav(document.forms[0],${totalPage} });">最后一页</a>
+            <c:if test="${page_Num != pageInfo.pageNum }">
+                <a class="ui label" href="${Project_PATH}/paid/paidlist?pn=${page_Num}">${page_Num }</a>
             </c:if>
-            &nbsp;&nbsp;
-        </ul>
+        </c:forEach>
+
+        <c:if test="${pageInfo.hasNextPage }">
+            <a class="ui label" href="${Project_PATH}/paid/paidlist?pn=${pageInfo.pageNum+1 }">下一页</a>
+        </c:if>
+        <a class="ui label" href="${Project_PATH}/paid/paidlist?pn=${pageInfo.pages}">末页</a>
     </div>
 
 

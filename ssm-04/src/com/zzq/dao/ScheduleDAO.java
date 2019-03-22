@@ -12,5 +12,9 @@ public interface ScheduleDAO {
 
      List<Schedule> selectByCondition();
 
-     int selectCountByCondition();
+     int deleteScheduleById(Integer id);
+
+     int insertSchedule(Schedule schedule);
+
+     int uodateSchedule(Schedule schedule);
 }

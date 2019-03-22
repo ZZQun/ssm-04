@@ -8,6 +8,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -130,21 +132,17 @@ public class UserController {
 	@RequestMapping("/userlist")
 	public String userList(@RequestParam(value="name",required=false)String name,
 			@RequestParam(value="id",required=false)Integer id,
-			@RequestParam(value="pageNo",required=false)Integer pageNo,Model model){
-		if(pageNo == null){
-			pageNo = 1;
-		}
+						   @RequestParam(defaultValue="1",required=true,value="pn") Integer pageNo,
+						   Model model){
+		Integer pageSize= Constant.PAGESIZE;//每页显示记录数
+		//分页查询
+		PageHelper.startPage(pageNo, pageSize);
 		//获取用户信息集合
-		List<UserList> userList = userListService.findByCondition(name,id,pageNo,Constant.PAGESIZE);
-		//获取用户信息的总数
-		Integer total = userListService.findCountByCondition(name,id);
-		Integer totalPage = total%Constant.PAGESIZE==0?total/Constant.PAGESIZE:total/Constant.PAGESIZE+1;
-		model.addAttribute("userList",userList);
-		model.addAttribute("total",total);
-		model.addAttribute("totalPage",totalPage);
+		List<UserList> userList = userListService.findByCondition(name,id);
+		PageInfo<UserList> pageInfo=new PageInfo<UserList>(userList);
+		model.addAttribute("pageInfo",pageInfo);
 		model.addAttribute("name",name);
 		model.addAttribute("id",id);
-		model.addAttribute("pageNo",pageNo);
 		return "userlist";
 	}
 	

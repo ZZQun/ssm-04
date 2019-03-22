@@ -12,10 +12,6 @@ import com.zzq.pojo.UserList;
 public interface UserListDAO {
 
 	 List<UserList> selectByCondition(@Param("name")String name,
-			@Param("id")Integer id,@Param("pageNo")Integer pageNo,
-			@Param("pageSize")Integer pageSize);
-	
-	 int selectCountByCondition(@Param("name")String name,
 			@Param("id")Integer id);
 	
 	 int insertUserList(UserList userList);

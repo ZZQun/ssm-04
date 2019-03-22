@@ -2,10 +2,6 @@
          pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/jsp/common/head.jsp"%>
 
-<%
-    pageContext.setAttribute("Project_PATH",request.getContextPath());
-%>
-
 <div class="right">
     <div class="location">
         <strong>你现在所在的位置是:</strong>

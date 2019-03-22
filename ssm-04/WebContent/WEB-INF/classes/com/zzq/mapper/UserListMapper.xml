@@ -13,7 +13,6 @@
 		</where>
 		order by 
 		ul.id ASC
-		limit #{pageNo},#{pageSize}
 	</select>
 	
 	<select id="selectCountByCondition" resultType="int">

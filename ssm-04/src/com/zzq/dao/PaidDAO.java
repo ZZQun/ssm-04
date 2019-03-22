@@ -13,12 +13,11 @@ public interface PaidDAO {
      List<Paid> selectByCondition(@Param("status")String status,
                                         @Param("name")String name,
                                         @Param("address")String address,
-                                        @Param("userlist_id")Integer userlist_id,
-                                        @Param("pageNo")Integer pageNo,
-                                        @Param("pageSize")Integer pageSize);
+                                        @Param("userlist_id")Integer userlist_id);
 
-     int selectCountByCondition(@Param("status")String status,
-                                      @Param("name")String name,
-                                      @Param("userlist_id")Integer userlist_id,
-                                      @Param("address")String address);
+     int deletePaidById(Integer id);
+
+     int insertPaid(Paid paid);
+
+     int updatePaid(Paid paid);
 }

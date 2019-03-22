@@ -19,4 +19,10 @@ public interface SolveDAO {
                                       @Param("name")String name,
                                       @Param("userlist_id")Integer userlist_id,
                                       @Param("address")String address);
+
+     int deleteSolveById(Integer id);
+
+     int insertSolve(Solve solve);
+
+     int updateSolve(Solve solve);
 }

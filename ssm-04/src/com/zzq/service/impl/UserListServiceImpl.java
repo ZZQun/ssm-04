@@ -16,14 +16,9 @@ public class UserListServiceImpl implements UserListService {
 	private UserListDAO userListDao;
 	
 	@Override
-	public List<UserList> findByCondition(String name, Integer id, Integer pageNo, Integer pageSize) {
-		Integer page = (pageNo -1)*pageSize;
-		return userListDao.selectByCondition(name,id,page,pageSize);
-	}
+	public List<UserList> findByCondition(String name, Integer id) {
 
-	@Override
-	public int findCountByCondition(String name, Integer id) {
-		return userListDao.selectCountByCondition(name,id);
+		return userListDao.selectByCondition(name,id);
 	}
 
 	@Override
